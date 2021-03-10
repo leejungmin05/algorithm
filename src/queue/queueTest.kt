@@ -11,6 +11,7 @@ fun main() {
     println(queue.toString())
 
     while(true) {
+        println("Queue 인터페이스 구현")
         println("명령어를 입력하세요")
         println("1 : offer  2 : poll  3 : peek  4: print  5 : exit \n>>>")
         val a = try {readLine()!!.toInt()} catch (e : NumberFormatException) {println("숫자를 입력하세요")}
