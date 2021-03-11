@@ -12,7 +12,6 @@ fun main() {
     list.add(7, 4)
     list.add(8, 45)
 
-
     println(list.toString())
 
     while (true) {
@@ -33,7 +32,12 @@ fun main() {
         when (a) {
             1 -> {
                 println("추가 하고싶은 곳의 인덱스와 원소를 입력하세요")
-                val idx = readLine()!!.toInt()
+                val idx = try {
+                    (readLine() ?: "").toInt()
+                } catch (e: Exception) {
+                    println("정수만넣으셈!! 뺴애애액!")
+                    continue
+                }
                 val value = readLine()!!.toInt()
                 list.add(idx, value)
                 println("추가되었습니다")

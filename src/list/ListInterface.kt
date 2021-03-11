@@ -3,11 +3,11 @@ package list
 interface ListInterface<E> {
 
     //리스트 요소 추가
-    fun add(value: Any?)
+    fun add(value: E)
 
 
     // 리스트의 index 위치에 있는 요소 삭제
-    fun remove(index: Int): E
+    fun remove(index: Int):E
 
     // 리스트에 있는 특정 위치의 요소 반환
     operator fun get(index: Int): E
@@ -16,10 +16,10 @@ interface ListInterface<E> {
     operator fun set(index: Int, value: E)
 
     // 특정요소가 리스트에 있는 지 여부확인
-    operator fun contains(value: Any?): Boolean
+    operator fun contains(value: E): Boolean
 
     //리스트에 특정요소가 몇번째 위치에 있는지 반환
-    fun indexOf(value: Any?): Int
+    fun indexOf(value: E): Int
 
     // 리스트에 있는 요소의 개수를 반환
     fun size(): Int

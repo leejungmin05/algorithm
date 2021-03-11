@@ -2,29 +2,28 @@ package queue
 
 
 class Queue<E> : QueueInterface<E> {
-    private var queue: Array<Any?>
+    private var queue: Array<E>
     private var rear = 0
     private var front = 0
     private var size = 0
 
     constructor() {
-        queue = arrayOfNulls(DEFAULT_CAPACITY)
+        queue = Array(DEFAULT_CAPACITY){i->Any()} as Array<E>
     }
 
     companion object {
-        private const val DEFAULT_CAPACITY = 64
+        private const val DEFAULT_CAPACITY = 10
     }
 
     private fun resize(newCapacity: Int) {
         val capacity = queue.size
-        val newQueue = arrayOf(newCapacity)
-        var i = 1
-        var j = front + 1
+        val newQueue: Array<E> = Array(newCapacity){i-> Any()} as Array<E>
+        var i = 0
+        var j = front
         while (size >= i) {
-            newQueue[++i] = queue[++j % capacity] as Int
+            newQueue[i++] = queue[j++ % capacity]
         }
-        queue = emptyArray()
-        queue = arrayOf(newQueue)
+        queue = newQueue
         front = 0
         rear = size
 
@@ -34,8 +33,8 @@ class Queue<E> : QueueInterface<E> {
         if ((rear + 1) % queue.size == front) {
             resize(queue.size * 2)
         }
-        rear = (rear + 1) % queue.size
-        queue[rear] = e
+        queue[rear % queue.size] = e
+        rear = (rear + 1)
         size++
         return true
     }
@@ -48,7 +47,6 @@ class Queue<E> : QueueInterface<E> {
         if (!isEmpty()) {
             front = (front + 1) % queue.size
             val e = queue[front] as E
-            queue[front] = null
             size--
             return e
         }
@@ -66,8 +64,8 @@ class Queue<E> : QueueInterface<E> {
 
     override fun toString(): String {
         var result = ""
-        for (i in front + 1..rear) {
-            result += (queue[i].toString() + " ")
+        for (i in front until rear) {
+            result += (queue[i % queue.size].toString() + " ")
         }
         return result
     }

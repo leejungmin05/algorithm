@@ -3,15 +3,21 @@ package list
 import java.util.Arrays.copyOf
 
 class List_new<E>(capacity: Int) : ListInterface<E> {
-    var list: Array<Any?> = arrayOf(capacity)
+    var list: Array<E> = Array(capacity) { i -> Any() } as Array<E>
 
     private var size = 0
 
-    override fun add(value: Any?) {
+    override fun add(value: E) {
+        if (size == list.size) {
+            val new_capacity = list.size * 2
+            list = copyOf(list, new_capacity)
+
+        }
+        list[size++] = value
 
     }
 
-    fun add(index: Int, value: Any?) {
+    fun add(index: Int, value: E) {
         if (size == list.size) {
             val new_capacity = list.size * 2
             list = copyOf(list, new_capacity)
@@ -20,18 +26,15 @@ class List_new<E>(capacity: Int) : ListInterface<E> {
         for (i in size downTo index + 1) {
             list[i] = list[i - 1]
         }
-        ++size
         list[index] = value
-
+        size++
     }
 
     override fun remove(index: Int): E {
         val element = list[index] as E
-        list[index] = null
 
         for (i in index until size) {
             list[i] = list[i + 1]
-            list[i + 1] = null
         }
         size--
         return element
@@ -45,11 +48,11 @@ class List_new<E>(capacity: Int) : ListInterface<E> {
         list[index] = value
     }
 
-    override fun contains(value: Any?): Boolean {
+    override fun contains(value: E): Boolean {
         return indexOf(value) >= 0
     }
 
-    override fun indexOf(value: Any?): Int {
+    override fun indexOf(value: E): Int {
         for (i in 0..size()) {
             if (value == list[i]) {
                 return i + 1
