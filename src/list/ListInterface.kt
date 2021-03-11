@@ -27,6 +27,7 @@ interface ListInterface<E> {
     // 리스트에 요소가 비어있는지 반환
     // 없을 경우 true 있을경우 false
     fun isEmpty(): Boolean
+
     // 리스트 모든 요소 삭제
     fun clear()
 }

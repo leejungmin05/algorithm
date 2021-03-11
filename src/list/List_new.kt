@@ -8,7 +8,7 @@ class List_new<E>(capacity: Int) : ListInterface<E> {
     private var size = 0
 
     override fun add(value: Any?) {
-        TODO("Not yet implemented")
+
     }
 
     fun add(index: Int, value: Any?) {
@@ -77,7 +77,6 @@ class List_new<E>(capacity: Int) : ListInterface<E> {
         }
         return result
     }
-
 
 
 }

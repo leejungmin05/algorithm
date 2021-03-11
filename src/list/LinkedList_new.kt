@@ -1,6 +1,6 @@
 package list
 
-class LinkedListNew<E>: ListInterface<E>   {
+class LinkedListNew<E> : ListInterface<E> {
     private var headNode: Node<E>? = null
     private var tailNode: Node<E>? = null
     var size: Int = -1
@@ -10,8 +10,8 @@ class LinkedListNew<E>: ListInterface<E>   {
             this.data = value as E
             this.next = null
         }
-        if(size==0) {
-            newNode.apply{ this.next =headNode }
+        if (size == 0) {
+            newNode.apply { this.next = headNode }
             headNode = newNode
             ++size
         } else {
@@ -25,44 +25,40 @@ class LinkedListNew<E>: ListInterface<E>   {
 
     private fun search(index: Int): Node<E>? {
         var node = headNode
-        for(i in 0 until index) {
+        for (i in 0 until index) {
             node = node?.next
         }
         return node
     }
 
     override fun remove(index: Int): E {
-       val prevNode: Node<E>
-       val removeNode: Node<E>
-       val nextNode: Node<E>
-       val element: E
+        val nextNode: Node<E>
+        val element: E
 
-       if(index==0){
-        // 첫번째 노드 삭제
+        if (index == 0) {
+            // 첫번째 노드 삭제
             headNode?.data = null
             headNode?.next = null
 
-           nextNode = headNode?.next!!
-           headNode = nextNode
-           size--
+            nextNode = headNode?.next!!
+            headNode = nextNode
+            size--
 
-           if(size == 0) {
-               tailNode =null
-           }
-           return element
+            if (size == 0) {
+                tailNode = null
+            }
 
-       } else if(index == size() ){
-        // 마지막 노드 삭제
-       } else {
-        // 중간 노드 삭제
-       }
-
+        } else if (index == size()) {
+            // 마지막 노드 삭제
+        } else {
+            // 중간 노드 삭제
+        }
 
     }
 
 
-    override fun get(index: Int): E? {
-        return search(index)?.data
+    override fun get(index: Int): E {
+        return search(index)?.data!!
     }
 
     override fun set(index: Int, value: E) {
@@ -74,8 +70,8 @@ class LinkedListNew<E>: ListInterface<E>   {
 
     override fun indexOf(value: Any?): Int {
         var index = 0
-        while(headNode != null) {
-            if(value == headNode!!.next){
+        while (headNode != null) {
+            if (value == headNode!!.next) {
                 return index
             }
             index++
@@ -93,11 +89,11 @@ class LinkedListNew<E>: ListInterface<E>   {
     }
 
     override fun isEmpty(): Boolean {
-       return size == -1
+        return size == -1
     }
 
     override fun clear() {
-        while(headNode != null) {
+        while (headNode != null) {
             val nextNode: Node<E>? = headNode?.next
             headNode!!.data = null
             headNode!!.next = null
