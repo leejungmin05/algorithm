@@ -2,8 +2,9 @@ package list
 
 interface ListInterface<E> {
 
-    // 리스트에 요소를 특정 위치에 추가5
-    fun add(index: Int, value: Any?)
+    //리스트 요소 추가
+    fun add(value: Any?)
+
 
     // 리스트의 index 위치에 있는 요소 삭제
     fun remove(index: Int): E

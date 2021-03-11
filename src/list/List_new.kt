@@ -7,7 +7,11 @@ class List_new<E>(capacity: Int) : ListInterface<E> {
 
     private var size = 0
 
-    override fun add(index: Int, value: Any?) {
+    override fun add(value: Any?) {
+        TODO("Not yet implemented")
+    }
+
+    fun add(index: Int, value: Any?) {
         if (size == list.size) {
             val new_capacity = list.size * 2
             list = copyOf(list, new_capacity)
@@ -73,5 +77,7 @@ class List_new<E>(capacity: Int) : ListInterface<E> {
         }
         return result
     }
+
+
 
 }
