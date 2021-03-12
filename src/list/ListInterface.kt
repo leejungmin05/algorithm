@@ -5,7 +5,6 @@ interface ListInterface<E> {
     //리스트 요소 추가
     fun add(value: E)
 
-
     // 리스트의 index 위치에 있는 요소 삭제
     fun remove(index: Int):E
 

@@ -15,7 +15,7 @@ fun main() {
     println(list.toString())
 
     while (true) {
-        println("List 인터페이스 구현")
+        println("---------------List 인터페이스 구현---------------")
         println("명령어를 입력하시오")
         println(
             "1: add  2: remove  3: set  4: get  5: contains  6: index of  7: size" +
@@ -35,18 +35,20 @@ fun main() {
                 val idx = try {
                     (readLine() ?: "").toInt()
                 } catch (e: Exception) {
-                    println("정수만넣으셈!! 뺴애애액!")
+                    println("정수만 입력하세요")
                     continue
                 }
                 val value = readLine()!!.toInt()
                 list.add(idx, value)
                 println("추가되었습니다")
+                println()
             }
             2 -> {
                 println("제거하고 싶은 요소의 인덱스를 입력하세요")
                 val idx = readLine()!!.toInt()
                 list.remove(idx)
                 println("삭제되었습니다")
+                println()
             }
             3 -> {
                 println("넣고 싶은 위치와 요소를 입력하세요")
@@ -54,12 +56,14 @@ fun main() {
                 val value = readLine()!!.toInt()
                 list.set(idx, value)
                 println("완료되었습니다")
+                println()
             }
             4 -> {
                 println("인덱스를 입력하세요")
                 val idx = readLine()!!.toInt()
                 println(list.get(idx))
                 println("완료되었습니다")
+                println()
 
             }
             5 -> {
@@ -70,6 +74,7 @@ fun main() {
                 } else {
                     println("존재하지 않는 요소입니다")
                 }
+                println()
 
             }
             6 -> {
@@ -80,16 +85,26 @@ fun main() {
                     println("리스트에 존재하지 않습니다")
                 }
                 println(result)
+                println()
             }
             7 -> {
                 println("리스트 사이즈는 " + list.size() + "입니다")
+                println()
             }
             8 -> {
                 println("모든 요소가 삭제됩니다")
                 list.clear()
+                println()
             }
-            9 -> println(list.toString())
-
+            9 -> {
+                try {
+                    println(list.toString())
+                } catch (e: NullPointerException) {
+                    println("리스트가 비었습니다")
+                    continue
+                }
+                println()
+            }
             10 -> return
         }
 
