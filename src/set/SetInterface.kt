@@ -14,13 +14,15 @@ interface SetInterface<E> {
     fun isEmpty(): Boolean
 
     //해당 요소를 삭제
-    fun remove(o: Any?): Boolean
+    fun remove(e: E): Boolean
 
     // 지정 요소가 set에 있는지 확인
-    operator fun contains(o: Any?): Boolean
+    operator fun contains(e: E): Boolean
 
     // 요소의 개수
     fun size(): Int
+
+    fun iterator() : Iterator<E>
 
 
 }

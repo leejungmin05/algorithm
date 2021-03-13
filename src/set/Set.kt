@@ -1,36 +1,44 @@
 package set
 
+import kotlin.collections.Set
+
 class Set<E> : SetInterface<E> {
-    var set = hashSetOf<E>()
+    var set: Array<E> = Array(10){i -> Any()} as Array<E>
+    private var index = -1
 
     // 중복 , 순서 없음
     override fun add(e: E): Boolean {
-        val i = set.iterator()
-        if (!i.hasNext()) set.add(e)
-        return true
-    }
-
-    override fun clear() {
-        set.size == 0
-
+        if(set.contains(e)) {
+            return false
+        } else {
+            set[++index] = e
+            return true
+        }
     }
 
     override fun isEmpty(): Boolean {
         return set.size == -1
     }
 
-    override fun remove(o: Any?): Boolean {
-        val i = set.iterator()
-        return i.hasNext() == o
-
-    }
-
-    override fun contains(o: Any?): Boolean {
-        val i = set.iterator()
-        return i.hasNext() == o
-    }
-
     override fun size(): Int {
         return set.size
     }
+
+    override fun iterator(): Iterator<E> {
+        TODO("Not yet implemented")
+    }
+
+    override fun clear() {
+        TODO("Not yet implemented")
+    }
+
+    override fun remove(e: E): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun contains(e: E): Boolean {
+        TODO("Not yet implemented")
+    }
+
+
 }

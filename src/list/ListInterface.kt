@@ -12,7 +12,7 @@ interface ListInterface<E> {
     operator fun get(index: Int): E
 
     // 특정위치 요소를 새 요소로 대체
-    operator fun set(index: Int, value: E)
+    operator fun set(index: Int, value: E):Boolean
 
     // 특정요소가 리스트에 있는 지 여부확인
     operator fun contains(value: E): Boolean

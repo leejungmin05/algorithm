@@ -1,7 +1,7 @@
 package list
 
 fun main() {
-    val list = List_new<Int>(10)
+    val list = ListNew<Int>(10)
     list.add(0, 3)
     list.add(1, 1)
     list.add(2, 5)

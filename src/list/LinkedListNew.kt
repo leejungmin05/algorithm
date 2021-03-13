@@ -65,10 +65,11 @@ class LinkedListNew<E> : ListInterface<E> {
         return currNode?.data!!
     }
 
-    override fun set(index: Int, value: E) {
+    override fun set(index: Int, value: E):Boolean {
         val replaceNode = node(index)
         //replaceNode?.data = null
         replaceNode?.data = value
+        return true
     }
 
 

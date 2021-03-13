@@ -1,7 +1,9 @@
 package set
 
+
 fun main() {
     val set = Set<Int>()
+
 
     while(true) {
         println("set 인터페이스 구현")
